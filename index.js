@@ -19,6 +19,7 @@ const io = new socketio.Server(server, {
 	cors: {
 		origin: [
 			"http://localhost:3000",
+            "typeracer-dfwgcqwoz-call-n.vercel.app",
 		],
 		methods: ["GET", "POST"],
 	},
