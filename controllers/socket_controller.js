@@ -96,7 +96,6 @@ const joinRoomHander = function ({ roomId, user }) {
   this.join(roomId);
   this.emit("words generated", rooms[roomId].toType);
   io.in(roomId).emit("room update", rooms[roomId].players);
-  this.to(roomId).emit("notify", `${user.username} is here.`);
   console.log("join", rooms);
 };
 
@@ -125,11 +124,6 @@ const leaveRoomHandler = function (user) {
 module.exports = function (socket, _io) {
   // save a reference to the socket.io server instance
   io = _io;
-
-  // console.log(io.sockets.adapter.rooms);
-  // console.log(sockets);
-  // console.log(socket.rooms);
-  console.log("connected, player:", socket.id);
 
   // handle user disconnect
   socket.on("disconnect", disconnectHandler);
